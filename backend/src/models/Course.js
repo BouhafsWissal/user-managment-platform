@@ -5,7 +5,7 @@ class Course {
     return new Promise((resolve, reject) => {
       db.run(
         'INSERT INTO courses (title, description, creatorId) VALUES (?, ?, ?)',
-        [title, description, creatorId],
+        [title, description, creatorId], // Nous passons creatorId pour associer le créateur
         function(err) {
           if (err) reject(err);
           resolve({ id: this.lastID, title, description, creatorId });
@@ -53,3 +53,5 @@ class Course {
     });
   }
 }
+
+export default Course;
